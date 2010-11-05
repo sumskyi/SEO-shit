@@ -1,0 +1,13 @@
+-title('Trending Topics')
+
+%ol
+  - for topic in @topics
+    %li
+      %b
+        = topic.name
+      - for post in topic.posts
+        %ul
+          %li
+            = post.text
+    %br
+

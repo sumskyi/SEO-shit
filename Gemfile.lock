@@ -13,6 +13,7 @@ GEM
     activesupport (2.3.8)
     awesome_print (0.2.1)
     crack (0.1.8)
+    haml (3.0.23)
     hashie (0.4.0)
     hirb (0.3.4)
     httparty (0.6.1)
@@ -44,6 +45,7 @@ PLATFORMS
 
 DEPENDENCIES
   awesome_print
+  haml
   hirb
   looksee
   mysql

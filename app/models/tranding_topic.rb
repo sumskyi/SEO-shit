@@ -1,22 +1,24 @@
 require 'twitter'
 require 'twitter/trends'
 
-class TrandingTopic
+class TrandingTopic < Twitter::Trends
+
+  attr_accessor :name
+
+  def initialize(name, query)
+    @name   = name
+    @query  = query
+  end
+
+  def posts
+    @posts ||= Twitter::Search.new(@query).fetch().results
+  end
 
   class << self
-    def names
-      @names ||= Twitter::Trends.current.collect{|el| {:name => el.name, :query => el.query}}
+    def topics
+      @topics ||= current.collect{|el| new(el.name, el.query)}
     end
-
-    def posts
-      @posts = {}
-      @names.each do |name|
-        puts name[:query]
-        @posts[name[:query].to_sym] = Twitter::Search.new(name[:query]).fetch().results
-      end
-      @posts
-    end
-
   end
 
 end
+

@@ -1,8 +1,7 @@
 class TrendingtopicController < ApplicationController
 
   def index
-    @names = TrandingTopic.names
-    @posts = TrandingTopic.posts
+    @topics = TrandingTopic.topics
   end
 
 end
