@@ -1,0 +1,16 @@
+<% title 'Trending Topics' %>
+
+<ol>
+  <% for name in @names %>
+    <li>
+      <b>Name:</b> <%= name[:name] %>;
+      <b>Query:</b> <%= name[:query] %><br/>
+      <ul>
+        <% for post in @posts[name[:query].to_sym] %>
+        <li><%= post.text %></li>
+        <% end %>
+      </ul>
+    </li>
+    <br/>
+  <% end %>
+</ol>
