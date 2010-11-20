@@ -33,6 +33,7 @@ GEM
       rake (>= 0.8.3)
     rake (0.8.7)
     sketches (0.1.1)
+    sqlite3-ruby (1.3.2)
     twitter (0.9.12)
       hashie (~> 0.4.0)
       httparty (~> 0.6.1)
@@ -52,5 +53,6 @@ DEPENDENCIES
   nifty-generators
   rails (= 2.3.8)
   sketches
+  sqlite3-ruby
   twitter
   wirble

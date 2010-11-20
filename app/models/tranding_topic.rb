@@ -18,6 +18,21 @@ class TrandingTopic < Twitter::Trends
     def topics
       @topics ||= current.collect{|el| new(el.name, el.query)}
     end
+
+    def refresh
+      topics.each do |topic|
+        local_topic = Topic.find_by_name(topic.name) or Topic.create({ :name => topic.name })
+        topic.posts.each do |post|
+          next if Post.find_by_twitter_post_id(post.id)
+          local_topic.posts << Post.new({
+            :twitter_post_id  => post.id,
+            :from_user        => post.from_user,
+            :from_user_id     => post.from_user_id,
+            :text             => post.text
+          })
+        end
+      end
+    end
   end
 
 end

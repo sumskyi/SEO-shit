@@ -4,6 +4,7 @@ gem 'rails', '2.3.8'
 gem 'haml'
 gem 'nifty-generators'
 gem 'twitter'
+gem 'sqlite3-ruby'
 
 group :development do
   gem 'wirble'
