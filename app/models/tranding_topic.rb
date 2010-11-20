@@ -21,7 +21,9 @@ class TrandingTopic < Twitter::Trends
 
     def refresh
       topics.each do |topic|
-        local_topic = Topic.find_by_name(topic.name) or Topic.create({ :name => topic.name })
+        local_topic = Topic.find_by_name(topic.name)
+        local_topic = Topic.create({ :name => topic.name }) unless local_topic
+
         topic.posts.each do |post|
           next if Post.find_by_twitter_post_id(post.id)
           local_topic.posts << Post.new({
