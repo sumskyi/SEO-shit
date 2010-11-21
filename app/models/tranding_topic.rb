@@ -20,6 +20,7 @@ class TrandingTopic < Twitter::Trends
     end
 
     def refresh
+      puts "[#{Time.now}] REFRESH STARTED"
       topics.each do |topic|
         local_topic = Topic.find_by_name(topic.name)
         local_topic = Topic.create({ :name => topic.name }) unless local_topic
@@ -34,6 +35,7 @@ class TrandingTopic < Twitter::Trends
           })
         end
       end
+      Sitemap.rebuild
     end
   end
 
