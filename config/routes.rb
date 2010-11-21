@@ -1,6 +1,12 @@
 ActionController::Routing::Routes.draw do |map|
 
   map.root :controller => 'trendingtopic'
+
+  map.with_options :controller => 'trendingtopic', :action => :show, :method => 'get' do |m|
+    m.connect '/topics/:topic', :page => '1'
+    m.connect '/topics/:topic/:page'
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:

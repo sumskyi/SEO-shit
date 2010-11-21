@@ -1,0 +1,7 @@
+-title(@topic.name)
+
+%ol
+  - for post in @posts
+    %li= post.text
+
+= will_paginate @posts
